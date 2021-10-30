@@ -54,7 +54,7 @@ uint8_t cpu_fetch(CPU* cpu);
 void    cpu_irq(CPU* cpu);
 void    cpu_nmi(CPU* cpu);
 bool    cpu_complete(CPU* cpu);
-char*   cpu_disassemble(CPU* cpu);
+char*   cpu_disassemble(CPU* cpu, char* instr);
 
 
 #endif /* __CPU_H__ */

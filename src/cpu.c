@@ -444,15 +444,11 @@ bool cpu_complete(CPU* cpu)
   return cpu->cycles == 0;
 }
 
-char* cpu_disassemble(CPU* cpu)
+char* cpu_disassemble(CPU* cpu, char* instr)
 {
 
-  char* instr = malloc(sizeof(char) * 16);
   if (instr == NULL)
-  {
-    fprintf(stderr, "Failed to allocate memory, abort.\n");
-    exit(-1);
-  }
+    return NULL;
 
   uint8_t opcode = cpu_read(cpu, cpu->pc);
 

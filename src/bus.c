@@ -1,4 +1,5 @@
 #include "bus.h"
+#include <stdio.h>
 #include <stdlib.h>
 
 Bus* bus_create(void)

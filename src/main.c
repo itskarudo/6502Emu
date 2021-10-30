@@ -34,13 +34,13 @@ int main(int argc, char** argv)
  
   cpu_reset(cpu);
 
-  char* instr = NULL;
+  char* instr = malloc(sizeof(char) * 16);
+
+  if (instr == NULL) goto exit;
+
 
   while(1)
   {
-
-    if (instr) free(instr);
-
     c = wgetch(stdscr);
     erase();
 
@@ -69,7 +69,7 @@ int main(int argc, char** argv)
 
     }
 
-    instr = cpu_disassemble(cpu);
+    instr = cpu_disassemble(cpu, instr);
 
     mvprintw(1, 1, "PC: $%04x", cpu->pc);
     mvprintw(2, 1, "X: $%02x", cpu->x);
@@ -93,6 +93,7 @@ int main(int argc, char** argv)
   }
 
 exit:
+  free(instr);
   endwin();
   cpu_destroy(cpu);
 

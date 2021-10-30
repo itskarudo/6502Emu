@@ -1,4 +1,3 @@
-#include <curses.h>
 #include "cpu.h"
 #include "opcode.h"
 
@@ -8,8 +7,6 @@ uint8_t addr_abs(CPU* cpu)
   cpu->pc++;
   uint8_t hi = cpu_read(cpu, cpu->pc);
   cpu->pc++;
-
-  mvprintw(9, 4, "0x%02x   0x%02x", lo, hi);
 
   cpu->addr_abs = (hi << 8) | lo;
 
